@@ -1,108 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-  <link rel="stylesheet" href="./index.css">
-</head>
-<body>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script>
-    $(document).ready(function() {
-      $('a[href^="#"]').on('click', function(event) {
-        var target = $( $(this).attr('href') );
-        if( target.length ) {
-          event.preventDefault();
-          $('html, body').animate({
-            scrollTop: target.offset().top
-          }, 1000);
-        }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="./index.css" />
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('a[href^="#"]').on("click", function (event) {
+          var target = $($(this).attr("href"));
+          if (target.length) {
+            event.preventDefault();
+            $("html, body").animate(
+              {
+                scrollTop: target.offset().top,
+              },
+              1000
+            );
+          }
+        });
       });
-    });
 
-    window.addEventListener('DOMContentLoaded', function() {
-    const aboutSection = document.querySelector('.about');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          aboutSection.classList.add('animate-left');
-          observer.disconnect();
-        }
+      window.addEventListener("DOMContentLoaded", function () {
+        const aboutSection = document.querySelector(".about");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                aboutSection.classList.add("animate-left");
+                observer.disconnect();
+              }
+            });
+          },
+          { threshold: 0.5 }
+        );
+        observer.observe(aboutSection);
       });
-    }, { threshold: 0.5 });
-    observer.observe(aboutSection);
-  });
+    </script>
+    <div class="container">
+      <header>
+        <h1 class="leftslider">My Portfolio</h1>
+        <nav>
+          <ul class="leftslider">
+            <li>
+              <a href="index.html">Home</a>
+            </li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+      <section id="home" class="hero">
+        <div class="content">
+          <h2 class="leftslider">Welcome to My Portfolio</h2>
+          <p class="bottomslider">Here, you'll find my latest projects and more.</p>
+          <a href="#portfolio" class="btn bottomslider">View Portfolio</a>
+        </div>
+        <div class="image-container">
+          <img class="rightslider" src="./me.jpg" alt="Image" />
+        </div>
+      </section>
+      <section id="about" class="about">
+        <div class="content">
+          <h2 class="topslider" style="font-weight: 1000">About Me</h2>
+          <p class="leftslider" style="font-weight: 900">
+            I am a student at SSN Engineering College, driven by a profound
+            interest in web development. With a keen eye for design and a knack
+            for coding, I strive to craft visually stunning and functional
+            websites. My journey into the realm of web development began with a
+            curiosity to bring ideas to life on the digital canvas. Through
+            relentless learning and experimentation, I've honed my skills in
+            HTML, CSS, JavaScript, and various frameworks. Beyond the classroom,
+            I eagerly explore new trends and techniques to stay ahead in this
+            dynamic field. My goal is to create immersive online experiences
+            that captivate and delight users, leaving a lasting impression.
+          </p>
+          <h1 class="bottomslider" style="font-weight: 1000">Education details:</h1>
+          <br>
+          <h3 class="rightslider" style="font-weight: 900">Murugappa Polytechnic College</h3>
+          <p class="rightslider" style="font-weight: 700">High School Diploma (2020 - 2023)</p>
+          <br>
+          <h3 class="rightslider" style="font-weight: 900" >SSN Engineering College</h3>
+          <p class="rightslider" style="font-weight: 700">Bachelor of Engineering in Computer Science and Engineering(2023 - Present)</p>
+        </div>
+      </section>
+      <section id="portfolio" class="portfolio">
+        <div class="content">
+          <h2 class="h2 topslider">Portfolio:</h2>
+
+          <div class="portfolio-item">
+            <h3 class="bottomslider">Student Feedback Application</h3>
+            <p class="leftslider">
+              A student feedback application is used for educational
+              institutions to collect input from students regarding their
+              learning experience, helping educators improve teaching methods
+              and course content based on student perspectives.
+            </p>
+            <img class="i rightslider" src="./p3.jpg" alt="Project 1" />
+          </div>
+          <div class="portfolio-item">
+            <h3  class="bottomslider">Employee Management System</h3>
+            <p class="leftslider">
+              An Employee Management System project aims to streamline
+              administrative tasks, such as attendance tracking, payroll
+              management, and performance evaluation, enhancing organizational
+              efficiency and employee satisfaction through centralized
+              management and automation of HR processes..
+            </p>
+            <img class="i rightslider" src="./p2.jpg" alt="Project 2" />
+          </div>
+        </div>
+      </section>
+      <section id="contact" class="contact">
+        <div class="content">
+          <h2 class="topslider">Contact Me</h2>
+          <p class="rightslider">
+            If you're interested in working together or have any questions, feel
+            free to reach out to me.
+          </p>
+          <form class="leftslider" action="#" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+          <ul class="social-media bottomslider">
+            <li class="l"><b>Contact No:</b>6369483219</li>
+            <li><b>Mail Id :</b> logeshwari.lctre1@gmail.com</li>
+          </ul>
+        </div>
+      </section>
+      <footer>
+        <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+      </footer>
+    </div>
+    <script>
+      ScrollReveal({
+       reset: true,
+       distance:'60px',
+       duration: 2500,
+       delay: 400
+      });
+
+      ScrollReveal().reveal('.leftslider', { delay: 200,origin:'left'});
+      ScrollReveal().reveal('.rightslider', { delay: 200,origin:'right'});
+      ScrollReveal().reveal('.bottomslider', { delay: 300,origin:'bottom'});      
+      ScrollReveal().reveal('.topslider', { delay: 300,origin:'bottom',});      
   </script>
-<div class="container">
-  <header>
-    <h1>My Portfolio</h1>
-    <nav>
-      <ul>
-        <li><a class="active" href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-  <section id="home" class="hero">
-    <div class="content">
-      <h2>Welcome to My Portfolio</h2>
-      <p>Here, you'll find my latest projects and more.</p>
-      <a href="#portfolio" class="btn">View Portfolio</a>
-    </div>
-    <div class="image-container">
-      <img src="./me.jpg"  alt="Image" />
-    </div>
-  </section>
-  <section id="about" class="about animate-left">
-    <div class="content">
-      <h2>About Me</h2>
-      <p>I'm a passionate web developer with a keen interest in creating beautiful and functional websites. I specialize in front-end development using modern web technologies.</p>
-      <p>With several years of experience in the industry, I have worked on various projects ranging from simple landing pages to complex web applications.</p>
-      <p>I am a passionate student at SSN Engineering College, driven by a profound interest in web development. With a keen eye for design and a knack for coding, I strive to craft visually stunning and functional websites. My journey into the realm of web development began with a curiosity to bring ideas to life on the digital canvas. Through relentless learning and experimentation, I've honed my skills in HTML, CSS, JavaScript, and various frameworks. Beyond the classroom, I eagerly explore new trends and techniques to stay ahead in this dynamic field. My goal is to create immersive online experiences that captivate and delight users, leaving a lasting impression. Let's build something remarkable together.</p>
-    </div>
-  </section>
-  <section id="portfolio" class="portfolio">
-    <div class="content">
-      <h2 class="h2">Portfolio:</h2>
-      <!-- Add your portfolio items here -->
-      <div class="portfolio-item">
-        <h3>Student Feedback Application</h3>
-        <p>A student feedback application is used for educational institutions to collect input from students regarding their learning experience, helping educators improve teaching methods and course content based on student perspectives.</p>
-        <img class="i" src="./p3.jpg" alt="Project 1">
-      </div>
-      <div class="portfolio-item">
-        <h3>Employee Management System</h3>
-        <p>An Employee Management System project aims to streamline administrative tasks, such as attendance tracking, payroll management, and performance evaluation, enhancing organizational efficiency and employee satisfaction through centralized management and automation of HR processes..</p>
-        <img class="i" src="./p2.jpg" alt="Project 2">
-      </div>
-      <!-- Add more portfolio items as needed -->
-    </div>
-  </section>
-  <section id="contact" class="contact">
-    <div class="content">
-      <h2>Contact Me</h2>
-      <p>If you're interested in working together or have any questions, feel free to reach out to me.</p>
-      <form action="#" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea>
-        <button type="submit" class="btn">Send Message</button>
-      </form>
-      <ul class="social-media">
-        <li class="l"><b>Contact No:</b>6369483219</li>
-        <li> <b>Mail Id :</b> logeshwari.l1ctre@gmail.com</li>
-      </ul>
-    </div>
-  </section>
-  <footer>
-    <p>&copy; 2024 My Portfolio. All rights reserved.</p>
-  </footer>
-</div>
-</body>
+  </body>
 </html>
